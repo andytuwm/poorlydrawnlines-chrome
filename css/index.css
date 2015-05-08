@@ -54,7 +54,7 @@ img {
 
 .navigation {
     position: relative;
-    right: 260px;
+    right: 275px;
 }
 /* This additional margin is used to make the toast popup cover the logo completely
 so that it looks nicer. Otherwise there'd be a small protruding edge. */
