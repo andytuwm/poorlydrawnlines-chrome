@@ -1,5 +1,5 @@
 window.onload = function () {
-
+    "use strict";
     setTimeout(function () {
         // New XHR object to get data from xkcd
         var oReq = new XMLHttpRequest();
@@ -80,7 +80,7 @@ window.onload = function () {
 
             // set most recent comic
             setComic(latestComic);
-            document.getElementById("end").dismiss;
+            document.getElementById("end").dismiss();
         }
 
         // Send HTTP request and retrieve info of the comic from specified url
@@ -96,7 +96,7 @@ window.onload = function () {
         // Navigation functions
         // Get first comic
         function getFirst() {
-            if (displayedComicIndex != endIndex) {
+            if (displayedComicIndex !== endIndex) {
                 displayedComicIndex = endIndex;
                 setComic(firstComic);
             } else
