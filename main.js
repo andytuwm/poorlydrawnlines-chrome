@@ -47,7 +47,6 @@ window.onload = function () {
         next.onload = next.addEventListener("click", getNext, false);
         last.onload = last.addEventListener("click", getLast, false);
         image.onload = image.addEventListener("click", openComic, false);
-        help.onload = help.addEventListener("click", openHelp, false);
         menuItemGetter.onload = menuItemGetter.addEventListener("core-activate", restoreComic, false);
         img.onerror = imgError;
 
@@ -65,7 +64,7 @@ window.onload = function () {
 
             // Update history here (on load of comic) so that the comic that user closes
             // extension on will be saved too.
-            //update(hist);
+            update(hist);
         }
 
         //Store archive of comics
@@ -149,14 +148,14 @@ window.onload = function () {
 
         // Stores history of viewed comics as a queue of ten
         function update(history) {
-            var title = displayedComic + ": " + comicTitle;
+            var title = comicTitle;
             var stored = {
-                com: displayedComic,
+                com: displayedComicIndex,
                 disp: title
             };
 
             // Store history as a map of (comic number: displayed title).
-            if (!historyContains(history, displayedComic)) {
+            if (!historyContains(history, displayedComicIndex)) {
 
                 if (history.length < 10) {
                     history.push(stored);
@@ -165,14 +164,14 @@ window.onload = function () {
                     history.push(stored);
                 }
                 arraybind.historyList = history;
-                //console.log(history);
+                console.log(history);
 
             } else {
-                var index = findIndex(history, displayedComic);
+                var index = findIndex(history, displayedComicIndex);
                 if (index > -1) {
                     var el = history.splice(index, 1);
                     history.push(el[0]);
-                    //console.log(history);
+                    console.log(history);
                 } else {
                     console.error('Error: Index should always be found if comic was found in history.');
                 }
@@ -181,18 +180,18 @@ window.onload = function () {
             chrome.storage.sync.set({
                 'browsed': history
             }, function () {
-                //console.log("History saved.");
+                console.log("History saved.");
             });
         }
 
         function restoreComic() {
             // Grab index of menu item clicked
             var comicIndex = menuItemGetter.selectedIndex;
-            //console.log(comicIndex);
+            console.log(comicIndex);
             // Grab stored comic number from history queue
-            var comicNum = hist[comicIndex].com;
-            //console.log(comicNum);
-            setComic("http://xkcd.com/" + comicNum + "/info.0.json");
+            displayedComicIndex = hist[comicIndex].com;
+            //console.log(displayedComicIndex);
+            setComic(getComicUrl(displayedComicIndex));
             //console.log(menuItemGetter.selected);
 
             // Clear dropdown sticky selection
