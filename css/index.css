@@ -15,6 +15,12 @@ img {
     width: auto;
 }
 
+.logo {
+    position: absolute;
+    bottom: -20px;
+    left: -15px;
+}
+
 #comic {
     display: block;
     margin-left: auto;
@@ -64,10 +70,10 @@ paper-toast {
 }
 /* Align the history button*/
 
-#history {
+#historybutton {
     position: relative;
     top: -2px;
-    right: 4px;
+    left: 75px;
 }
 /* History dropdown sizing & alignment*/
 
