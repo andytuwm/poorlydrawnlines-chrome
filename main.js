@@ -10,8 +10,7 @@ window.onload = function () {
         var latestComic = null,
             firstComic = null;
         var comicTitle = null;
-        var comicUrlBase = "http://poorlydrawnlines.com/comic/",
-            currentUrl = null;
+        var currentUrl = null;
         var arraybind = document.getElementById('array');
         var hist = [];
 
@@ -39,6 +38,7 @@ window.onload = function () {
         var next = document.getElementById("next");
         var last = document.getElementById("last");
         var image = document.getElementById("comic");
+        var search = document.getElementById("search");
         var help = document.getElementById("explain");
         var menuItemGetter = document.getElementById('historyMenu');
         var img = document.getElementById('comic');
@@ -49,6 +49,7 @@ window.onload = function () {
         next.onload = next.addEventListener("click", getNext, false);
         last.onload = last.addEventListener("click", getLast, false);
         image.onload = image.addEventListener("click", openComic, false);
+        search.onload = search.addEventListener("keyup", searchComic, false);
         menuItemGetter.onload = menuItemGetter.addEventListener("core-activate", restoreComic, false);
         img.onerror = imgError;
 
@@ -58,7 +59,9 @@ window.onload = function () {
             comicTitle = this.response.title.replace(/Poorly Drawn Lines(\s\W\s)/i, "");
             //console.log(comicTitle);
 
+            var displayNum = endIndex - displayedComicIndex;
             document.getElementById("comicTitle").innerHTML = comicTitle;
+            document.getElementById("comicNumber").innerHTML = "#" + displayNum;
             document.getElementById("comic").src = this.response.querySelector('#post img').src;
             document.getElementById("comic").title = comicTitle;
 
@@ -136,6 +139,25 @@ window.onload = function () {
                 setComic(latestComic);
             } else
                 document.getElementById("end").show();
+        }
+
+        // Makes a search query for the comic number specified
+        function searchComic() {
+            if (window.event.keyCode === 13) {
+                var comicSearch = document.getElementById("input").committedValue;
+                if (comicSearch.match(/[a-z]/i) || !comicSearch.match(/[0-9]+/)) {
+                    document.getElementById("badinput").show();
+                } else if (endIndex - comicSearch === displayedComicIndex) {
+                    document.getElementById("already").show();
+                } else if (comicSearch >= 0 && comicSearch <= endIndex) {
+                    displayedComicIndex = endIndex - comicSearch;
+                    setComic(getComicUrl(displayedComicIndex));
+                } else {
+                    document.getElementById("badnum").show();
+                }
+                // Clear search text input field
+                document.getElementById("input").value = "";
+            }
         }
 
         // Opens a new tab to the comic's page on actual site

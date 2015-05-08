@@ -45,16 +45,18 @@ img {
 #comicNumber {
     font-size: 16px;
     font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #image {
-    height: 442px;
+    height: 465px;
 }
 /* Position the navigation bar at the center. */
 
 .navigation {
     position: relative;
-    right: 275px;
+    right: 20px;
 }
 /* This additional margin is used to make the toast popup cover the logo completely
 so that it looks nicer. Otherwise there'd be a small protruding edge. */
@@ -110,4 +112,11 @@ paper-toast {
     position: relative;
     top: -10px;
     font-size: 14px;
+}
+/* Align the search bar with the other buttons. */
+
+#search {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
