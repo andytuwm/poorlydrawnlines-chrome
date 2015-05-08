@@ -1,0 +1,107 @@
+/* Use Roboto and suitable font size*/
+
+body {
+    text-align: center;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+/* Ensure the comic image resizes correctly. */
+
+img {
+    max-height: 442px;
+    max-width: 740px;
+    height: auto;
+    width: auto;
+}
+
+#comic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#comicContainer {
+    background: white;
+    width: 750px;
+    height: 500px;
+    margin: auto;
+}
+
+#comicTitle {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: -7px;
+    position: relative;
+    bottom: 12px;
+}
+
+#comicNumber {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+#image {
+    height: 442px;
+}
+/* Position the navigation bar at the center. */
+
+.navigation {
+    position: relative;
+    right: 260px;
+}
+/* This additional margin is used to make the toast popup cover the logo completely
+so that it looks nicer. Otherwise there'd be a small protruding edge. */
+
+paper-toast {
+    margin-left: -3px;
+}
+/* Resize history button icon*/
+
+#history::shadow core-icon {
+    width: 30px;
+    height: 30px;
+}
+/* Align the history button*/
+
+#history {
+    position: relative;
+    top: -2px;
+    right: 4px;
+}
+/* History dropdown sizing & alignment*/
+
+.dropdown {
+    display: table;
+    /* Set to table to force dropdown to wrap list items. */
+    
+    bottom: 15px;
+    width: 190px;
+    max-width: 210px;
+    max-height: 330px;
+}
+
+.smallmenu {
+    overflow: hidden;
+    white-space: nowrap;
+    /* Do not wrap text to next line when it goes over. */
+    
+    text-overflow: ellipsis;
+    /* Renders ellipsis when text is clipped. */
+    
+    height: 30px;
+    /* Give each listing in history dropdown height of 30px. */
+}
+/* Remove margins in dropdown. */
+
+#historyMenu {
+    margin: 0;
+}
+/* Vertically center the text within the list. Accounts for paper-item
+   .button-content padding. */
+
+.smallmenu > div {
+    position: relative;
+    top: -10px;
+    font-size: 14px;
+}
