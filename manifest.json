@@ -7,7 +7,7 @@
     "version": "0.1.0",
 
     "icons": {
-        "128": "assets/pld_128.png"
+        "128": "assets/pdl_128.png"
     },
 
     "browser_action": {
