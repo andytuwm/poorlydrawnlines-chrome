@@ -13,7 +13,7 @@
 
     "browser_action": {
         "default_icon": "assets/pdl_128.png",
-        "default_popup": "index.html",
+        "default_popup": "bin/index.html",
         "default_name": "View comic"
     },
 

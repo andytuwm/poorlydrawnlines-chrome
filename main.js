@@ -50,13 +50,11 @@ window.onload = function () {
         menuItemGetter.onload = menuItemGetter.addEventListener("core-activate", restoreComic, false);
         img.onerror = imgError;
 
-
-
         // Populates title and image, sets the current comic from the response
         function reqListener() {
             //displayedComicIndex = this.response.num;
             comicTitle = this.response.title.replace(/Poorly Drawn Lines(\s\W\s)/i, "");
-            console.log(comicTitle);
+            //console.log(comicTitle);
 
             document.getElementById("comicTitle").innerHTML = comicTitle;
             document.getElementById("comic").src = this.response.querySelector('#post img').src;
@@ -71,14 +69,14 @@ window.onload = function () {
         function setup() {
             // get archive of comics
             archiveList = this.response.querySelector('#content > ul').children;
-            console.log(archiveList);
+            //console.log(archiveList);
 
             // set endpoint parameters
             displayedComicIndex = 0;
             endIndex = archiveList.length - 1;
             latestComic = archiveList[0].firstChild.href;
             firstComic = archiveList[endIndex].firstChild.href;
-            console.log(latestComic, firstComic, displayedComicIndex, endIndex);
+            //console.log(latestComic, firstComic, displayedComicIndex, endIndex);
 
             // set most recent comic
             setComic(latestComic);
@@ -164,14 +162,14 @@ window.onload = function () {
                     history.push(stored);
                 }
                 arraybind.historyList = history;
-                console.log(history);
+                //console.log(history);
 
             } else {
                 var index = findIndex(history, displayedComicIndex);
                 if (index > -1) {
                     var el = history.splice(index, 1);
                     history.push(el[0]);
-                    console.log(history);
+                    //console.log(history);
                 } else {
                     console.error('Error: Index should always be found if comic was found in history.');
                 }
@@ -180,14 +178,14 @@ window.onload = function () {
             chrome.storage.sync.set({
                 'browsed': history
             }, function () {
-                console.log("History saved.");
+                //console.log("History saved.");
             });
         }
 
         function restoreComic() {
             // Grab index of menu item clicked
             var comicIndex = menuItemGetter.selectedIndex;
-            console.log(comicIndex);
+            //console.log(comicIndex);
             // Grab stored comic number from history queue
             displayedComicIndex = hist[comicIndex].com;
             //console.log(displayedComicIndex);
