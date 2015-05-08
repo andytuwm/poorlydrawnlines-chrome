@@ -9,7 +9,7 @@ body {
 /* Ensure the comic image resizes correctly. */
 
 img {
-    max-height: 442px;
+    max-height: 475px;
     max-width: 740px;
     height: auto;
     width: auto;
@@ -50,7 +50,7 @@ img {
 }
 
 #image {
-    height: 465px;
+    height: 475px;
 }
 /* Position the navigation bar at the center. */
 
