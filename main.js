@@ -15,14 +15,14 @@ window.onload = function () {
         var arraybind = document.getElementById('array');
         var hist = [];
 
-        /*        // Retrieve history from chrome.storage.sync on start.
-                // Set saved history array for data binding.
-                chrome.storage.sync.get('browsed', function (array) {
-                    hist = array.browsed;
-                    arraybind.historyList = hist;
-                    //console.log(arraybind.historyList);
-                    //console.log(hist);
-                });*/
+        // Retrieve history from chrome.storage.sync on start.
+        // Set saved history array for data binding.
+        chrome.storage.sync.get('browsed', function (array) {
+            hist = array.browsed;
+            arraybind.historyList = hist;
+            //console.log(arraybind.historyList);
+            //console.log(hist);
+        });
 
         // Initialize comics in archive
         oReq.responseType = "document";
@@ -56,7 +56,7 @@ window.onload = function () {
         // Populates title and image, sets the current comic from the response
         function reqListener() {
             //displayedComicIndex = this.response.num;
-            comicTitle = this.response.title;
+            comicTitle = this.response.title.replace(/Poorly Drawn Lines(\s\W\s)/i, "");
             console.log(comicTitle);
 
             document.getElementById("comicTitle").innerHTML = comicTitle;
