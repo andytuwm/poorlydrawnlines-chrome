@@ -18,8 +18,10 @@ window.onload = function () {
         // Retrieve history from chrome.storage.sync on start.
         // Set saved history array for data binding.
         chrome.storage.sync.get('browsed', function (array) {
-            hist = array.browsed;
-            arraybind.historyList = hist;
+            if (array.browsed) {
+                hist = array.browsed;
+                arraybind.historyList = hist;
+            }
             //console.log(arraybind.historyList);
             //console.log(hist);
         });
@@ -80,7 +82,7 @@ window.onload = function () {
 
             // set most recent comic
             setComic(latestComic);
-            document.getElementById("end").dismiss();
+            document.getElementById("end").dismiss;
         }
 
         // Send HTTP request and retrieve info of the comic from specified url
@@ -198,9 +200,11 @@ window.onload = function () {
 
         // Check if comic num is already in history.
         function historyContains(jsonArray, num) {
-            for (var i = 0; i < jsonArray.length; i++) {
-                if (jsonArray[i].com == num) {
-                    return true;
+            if (jsonArray) {
+                for (var i = 0; i < jsonArray.length; i++) {
+                    if (jsonArray[i].com == num) {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -208,9 +212,11 @@ window.onload = function () {
 
         // Return index of the specified comic in history; if not found, return -1.
         function findIndex(jsonArray, num) {
-            for (var i = 0; i < jsonArray.length; i++) {
-                if (jsonArray[i].com == num) {
-                    return i;
+            if (jsonArray) {
+                for (var i = 0; i < jsonArray.length; i++) {
+                    if (jsonArray[i].com == num) {
+                        return i;
+                    }
                 }
             }
             return -1;
