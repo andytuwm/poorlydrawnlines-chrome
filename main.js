@@ -11,7 +11,8 @@ window.onload = function () {
             firstComic = null,
             comicTitle = null,
             currentUrl = null,
-            expanded = false;
+            expanded = false,
+            spinCount = 1;
         var arraybind = document.getElementById('array'),
             hist = [];
 
@@ -123,7 +124,13 @@ window.onload = function () {
 
         // Get random comic
         function getRandom() {
-            rand.style.WebkitAnimation = "fullSpin 0.8s ease-in-out";
+            if (spinCount == 1) {
+                rand.style.WebkitAnimation = "fullSpin 0.7s ease-out";
+                spinCount++;
+            } else {
+                rand.style.WebkitAnimation = "fullSpin2 0.7s ease-out";
+                spinCount--;
+            }
             displayedComicIndex = Math.floor((Math.random() * endIndex));
             setComic(getComicUrl(displayedComicIndex));
         }
@@ -264,6 +271,7 @@ window.onload = function () {
                 document.getElementById('image').style.overflowY = 'scroll';
                 image.style.maxHeight = 'none';
                 expand.style.WebkitAnimation = "spin 0.3s ease-in-out 1 forwards";
+                expand.style.opacity = '1';
                 expanded = true;
             } else {
                 document.getElementById('image').style.overflowY = 'hidden';
