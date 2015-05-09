@@ -6,13 +6,14 @@ window.onload = function () {
         // Variables to store comic numbers to keep track of which is displayed.
         var displayedComicIndex = null,
             endIndex = null,
-            archiveList = null;
-        var latestComic = null,
-            firstComic = null;
-        var comicTitle = null;
-        var currentUrl = null;
-        var arraybind = document.getElementById('array');
-        var hist = [];
+            archiveList = null,
+            latestComic = null,
+            firstComic = null,
+            comicTitle = null,
+            currentUrl = null,
+            expanded = false;
+        var arraybind = document.getElementById('array'),
+            hist = [];
 
         // Retrieve history from chrome.storage.sync on start.
         // Set saved history array for data binding.
@@ -41,7 +42,7 @@ window.onload = function () {
         var search = document.getElementById("search");
         var help = document.getElementById("explain");
         var menuItemGetter = document.getElementById('historyMenu');
-        var img = document.getElementById('comic');
+        var expand = document.getElementById('expand');
 
         first.onload = first.addEventListener("click", getFirst, false);
         prev.onload = prev.addEventListener("click", getPrevious, false);
@@ -51,7 +52,8 @@ window.onload = function () {
         image.onload = image.addEventListener("click", openComic, false);
         search.onload = search.addEventListener("keyup", searchComic, false);
         menuItemGetter.onload = menuItemGetter.addEventListener("core-activate", restoreComic, false);
-        img.onerror = imgError;
+        expand.onload = expand.addEventListener("click", expandComic, false);
+        image.onerror = imgError;
 
         // Populates title and image, sets the current comic from the response
         function reqListener() {
@@ -86,6 +88,8 @@ window.onload = function () {
             // set most recent comic
             setComic(latestComic);
             document.getElementById("end").dismiss;
+
+            expand.style.WebkitAnimation = 'fadeIn 0.5s ease-in 1 forwards';
         }
 
         // Send HTTP request and retrieve info of the comic from specified url
@@ -119,6 +123,7 @@ window.onload = function () {
 
         // Get random comic
         function getRandom() {
+            rand.style.WebkitAnimation = "fullSpin 0.8s ease-in-out";
             displayedComicIndex = Math.floor((Math.random() * endIndex));
             setComic(getComicUrl(displayedComicIndex));
         }
@@ -252,5 +257,21 @@ window.onload = function () {
         function imgError() {
             document.getElementById("404").show();
         }
+
+        // Expand or minimize comic
+        function expandComic() {
+            if (!expanded) {
+                document.getElementById('image').style.overflowY = 'scroll';
+                image.style.maxHeight = 'none';
+                expand.style.WebkitAnimation = "spin 0.3s ease-in-out 1 forwards";
+                expanded = true;
+            } else {
+                document.getElementById('image').style.overflowY = 'hidden';
+                image.style.maxHeight = '475px';
+                expand.style.WebkitAnimation = "spinBack 0.3s ease-in-out 1 forwards";
+                expanded = false;
+            }
+        }
+
     }, 100);
 };

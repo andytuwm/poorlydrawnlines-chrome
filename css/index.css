@@ -8,23 +8,14 @@ body {
 }
 /* Ensure the comic image resizes correctly. */
 
-img {
-    max-height: 475px;
-    max-width: 740px;
-    height: auto;
-    width: auto;
-}
-
-.logo {
-    position: absolute;
-    bottom: -20px;
-    left: -15px;
-}
-
 #comic {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    max-height: 475px;
+    max-width: 740px;
+    height: auto;
+    width: auto;
 }
 
 #comicContainer {
@@ -38,8 +29,7 @@ img {
     font-size: 25px;
     font-weight: 400;
     margin-bottom: -7px;
-    position: relative;
-    bottom: 12px;
+    max-width: 150px;
 }
 
 #comicNumber {
@@ -48,21 +38,54 @@ img {
     margin-top: 0;
     margin-bottom: 0;
 }
+/* History dropdown sizing & alignment*/
+
+.dropdown {
+    display: table;
+    /* Set to table to force dropdown to wrap list items. */
+    
+    bottom: 15px;
+    width: 190px;
+    max-width: 210px;
+    max-height: 330px;
+}
+
+#expand {
+    position: fixed;
+    top: 7px;
+    right: 200px;
+    opacity: 0;
+}
 
 #image {
     height: 475px;
 }
-/* Position the navigation bar at the center. */
+/* Customize the scrollbar */
 
-.navigation {
-    position: relative;
-    right: 20px;
+#image::-webkit-scrollbar {
+    width: 8px;
 }
-/* This additional margin is used to make the toast popup cover the logo completely
-so that it looks nicer. Otherwise there'd be a small protruding edge. */
 
-paper-toast {
-    margin-left: -3px;
+#image::-webkit-scrollbar-button {
+    width: 8px;
+    height: 5px;
+}
+
+#image::-webkit-scrollbar-track {
+    background: #eee;
+    border: thin solid lightgray;
+    box-shadow: 0 0 3px #dfdfdf inset;
+    border-radius: 10px;
+}
+
+#image::-webkit-scrollbar-thumb {
+    background: #999;
+    border: thin solid gray;
+    border-radius: 10px;
+}
+
+#image::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
 }
 /* Resize history button icon*/
 
@@ -77,16 +100,36 @@ paper-toast {
     top: -2px;
     left: 75px;
 }
-/* History dropdown sizing & alignment*/
+/* Remove margins in dropdown. */
 
-.dropdown {
-    display: table;
-    /* Set to table to force dropdown to wrap list items. */
-    
-    bottom: 15px;
-    width: 190px;
-    max-width: 210px;
-    max-height: 330px;
+#historyMenu {
+    margin: 0;
+}
+/* Poorly drawn duck icon. */
+
+.logo {
+    position: absolute;
+    bottom: -20px;
+    left: -15px;
+}
+/* Position the navigation bar at the center. */
+
+.navigation {
+    position: relative;
+    right: 20px;
+}
+/* This additional margin is used to make the toast popup cover the logo completely
+so that it looks nicer. Otherwise there'd be a small protruding edge. */
+
+paper-toast {
+    margin-left: -3px;
+}
+/* Align the search bar with the other buttons. */
+
+#search {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .smallmenu {
@@ -100,11 +143,6 @@ paper-toast {
     height: 30px;
     /* Give each listing in history dropdown height of 30px. */
 }
-/* Remove margins in dropdown. */
-
-#historyMenu {
-    margin: 0;
-}
 /* Vertically center the text within the list. Accounts for paper-item
    .button-content padding. */
 
@@ -113,10 +151,39 @@ paper-toast {
     top: -10px;
     font-size: 14px;
 }
-/* Align the search bar with the other buttons. */
 
-#search {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-180deg);
+    }
+}
+
+@-webkit-keyframes spinBack {
+    from {
+        -webkit-transform: rotate(-180deg);
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes fullSpin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(-360deg);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
