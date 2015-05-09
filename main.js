@@ -71,6 +71,9 @@ window.onload = function () {
             // Update history here (on load of comic) so that the comic that user closes
             // extension on will be saved too.
             update(hist);
+
+            if (expanded)
+                document.getElementById('image').scrollTop = 0;
         }
 
         //Store archive of comics
