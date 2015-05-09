@@ -52,8 +52,9 @@ body {
 
 #expand {
     position: fixed;
-    top: 7px;
-    right: 200px;
+    /*top: 7px;
+    right: 100px;*/
+    
     opacity: 0;
 }
 
