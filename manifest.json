@@ -20,5 +20,9 @@
 
     "permissions": [
     "http://poorlydrawnlines.com/",
-    "storage"]
+    "storage"],
+
+    "background": {
+        "page": "bin/index.html"
+    }
 }

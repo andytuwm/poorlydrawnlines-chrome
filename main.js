@@ -65,7 +65,7 @@ window.onload = function () {
             var displayNum = endIndex - displayedComicIndex;
             document.getElementById("comicTitle").innerHTML = comicTitle;
             document.getElementById("comicNumber").innerHTML = "#" + displayNum;
-            document.getElementById("comic").src = this.response.querySelector('#post img').src;
+            document.getElementById("comic").src = this.response.querySelector('.post img').src;
             document.getElementById("comic").title = comicTitle;
 
             // Update history here (on load of comic) so that the comic that user closes
@@ -79,7 +79,7 @@ window.onload = function () {
         //Store archive of comics
         function setup() {
             // get archive of comics
-            archiveList = this.response.querySelector('#content > ul').children;
+            archiveList = this.response.querySelector('.content > ul').children;
             //console.log(archiveList);
 
             // set endpoint parameters
@@ -91,7 +91,7 @@ window.onload = function () {
 
             // set most recent comic
             setComic(latestComic);
-            document.getElementById("end").dismiss;
+            document.getElementById("end").dismiss();
 
             expand.style.WebkitAnimation = 'fadeIn 0.5s ease-in 1 forwards';
         }
