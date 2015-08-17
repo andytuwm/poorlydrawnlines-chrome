@@ -11,6 +11,9 @@ Type a number and press enter to search for the comic with the specified comic n
 
 Installation
 ====
+Download from the [Chrome Web Store](https://chrome.google.com/webstore/detail/poorly-drawn-lines-comics/bcbgodbmifmighnoommmooiaabpkiodi)
+
+or
 
 ```
 1. Click 'Download Zip' on the right
