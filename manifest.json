@@ -4,7 +4,7 @@
     "name": "Poorly Drawn Lines - Comics Viewer",
     "short_name": "pdl-comics",
     "description": "View the web comic Poorly Drawn Lines from any page!",
-    "version": "1.0.0",
+    "version": "1.0.1",
 
     "icons": {
         "128": "assets/pdl_128.png"

@@ -98,8 +98,6 @@ button.mdl-button {
 
 #expand {
     position: fixed;
-    /*top: 7px;
-    right: 100px;*/
     opacity: 0;
 }
 

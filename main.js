@@ -92,9 +92,16 @@ window.onload = function () {
         //console.log(latestComic, firstComic, displayedComicIndex, endIndex);
 
         // set most recent comic
-        setComic(latestComic);
-        // fade in the expand button after image is loaded
-        expand.style.WebkitAnimation = 'fadeIn 0.5s ease-in 1 forwards';
+        new Promise(function (resolve) {
+            setComic(latestComic);
+            image.onload = function () {
+                resolve();
+            };
+        }).then(function () {
+            // fade in the expand button after image is loaded
+            expand.style.WebkitAnimation = 'fadeIn 0.5s ease-in 1 forwards';
+        });
+
     }
 
     // Send HTTP request and retrieve info of the comic from specified url
