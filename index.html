@@ -2,70 +2,82 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/bin/css/index.css">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
-    <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <link rel="import" href="/bower_components/paper-toast/paper-toast.html">
-    <link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html">
-    <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
-    <link rel="import" href="/bower_components/paper-input/paper-input-decorator.html" async>
-    <link rel="import" href="/bower_components/core-icons/notification-icons.html" async>
-    <link rel="import" href="/bower_components/core-input/core-input.html" async>
-    <link rel="import" href="/bower_components/core-menu/core-menu.html" async>
-    <link rel="import" href="/bower_components/paper-menu-button/paper-menu-button.html" async>
-    <link rel="import" href="/bower_components/paper-item/paper-item.html" async>
+    <link rel="stylesheet" href="/mdl/material.min.css">
+    <script src="/mdl/material.min.js" async></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <script src="main.js" async></script>
 </head>
 
-<body unresolved class="noscroll">
-
+<body>
+    <div class="mdl-spinner mdl-js-spinner is-active"></div>
     <div id="comicContainer">
         <div>
             <span id="comicTitle"></span>
-            <paper-icon-button id="expand" icon="expand-more" title="Expand"></paper-icon-button>
+            <button id="expand" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="Expand">
+                <i class="material-icons">expand_more</i>
+            </button>
         </div>
+
         <h2 id="comicNumber"></h2>
         <div id="image">
-            <img id="comic">
+            <div class="img-align">
+                <img id="comic">
+            </div>
         </div>
-        <div horizontal justified layout>
-            <div>
+
+        <div class="mdl-grid" style="padding: 0;">
+            <div class="mdl-cell mdl-cell--2-col">
                 <img class="logo" src="/assets/pdl_128.png">
-                <paper-menu-button id="historybutton">
-                    <paper-icon-button id="history" icon="schedule" title="History"></paper-icon-button>
-                    <paper-dropdown class="dropdown" id="no-pad" valign="bottom" duration="200">
-                        <core-menu id="historyMenu">
-                            <template id="array" is="auto-binding" repeat="{{historyList}}">
-                                <paper-item class="smallmenu">
-                                    <div>{{disp}}</div>
-                                </paper-item>
-                            </template>
-                        </core-menu>
-                    </paper-dropdown>
-                </paper-menu-button>
+
+                <button id="hist-button" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
+                    <i class="material-icons" style="font-size: 27px;">history</i>
+                </button>
+
+                <ul id="historyMenu" class="mdl-menu mdl-menu--top-left mdl-js-menu mdl-js-ripple-effect" for="hist-button">
+                    <div id="histList">
+                        <li class="mdl-menu__item">No item's in history yet!</li>
+                    </div>
+                </ul>
+
             </div>
-            <div class="navigation">
-                <paper-icon-button id="first" src="/assets/start.png" title="First"></paper-icon-button>
-                <paper-icon-button id="prev" src="/assets/back.png" title="Previous"></paper-icon-button>
-                <paper-icon-button id="random" icon="notification:sync" title="Random"></paper-icon-button>
-                <paper-icon-button id="next" src="/assets/next.png" title="Next"></paper-icon-button>
-                <paper-icon-button id="last" src="/assets/end.png" title="Last"></paper-icon-button>
+            <div class="navigation mdl-cell mdl-cell--4-col">
+                <button id="first" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="First">
+                    <img src="/assets/start.png">
+                </button>
+                <button id="prev" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="Previous">
+                    <i class="nav material-icons">navigate_before</i>
+                </button>
+                <button id="random" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="Random">
+                    <i class="material-icons">sync</i>
+                </button>
+                <button id="next" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="Next">
+                    <i class="nav material-icons">navigate_next</i>
+                </button>
+                <button id="last" class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" title="Last">
+                    <img src="/assets/end.png">
+                </button>
             </div>
-            <div>
-                <paper-input-decorator id="search" label="Search Comic Number">
-                    <input id="input" is="core-input">
-                </paper-input-decorator>
+            <div class="mdl-cell mdl-cell--2-col">
+                <!-- Comic Search Input -->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="searchinput" />
+                    <label class="mdl-textfield__label" for="searchinput">Search Comic Number...</label>
+                </div>
             </div>
         </div>
+
     </div>
 
+    <!--
     <paper-toast id="end" text="You have reached the end." duration=1500></paper-toast>
     <paper-toast id="badinput" text="You have entered an invalid search input." duration=1500></paper-toast>
     <paper-toast id="badnum" text="Could not find comic with inputted number." duration=1500></paper-toast>
     <paper-toast id="already" text="Already displaying searched comic." duration=1500></paper-toast>
     <paper-toast id="404" text="404 Network Error. Please try again." duration=1500></paper-toast>
+-->
 
 </body>
 

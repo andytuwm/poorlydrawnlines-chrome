@@ -3,19 +3,15 @@
 body {
     text-align: center;
     overflow: hidden;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
 }
+
+
 /* Ensure the comic image resizes correctly. */
 
 #comic {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 475px;
-    max-width: 740px;
-    height: auto;
-    width: auto;
+    max-height: 450px;
+    -webkit-transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-out;
 }
 
 #comicContainer {
@@ -25,43 +21,86 @@ body {
     margin: auto;
 }
 
+#comicContainer .mdl-grid {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
 #comicTitle {
     font-size: 25px;
-    font-weight: 400;
-    margin-bottom: -7px;
-    max-width: 150px;
+    position: relative;
+    top: 11px;
 }
 
 #comicNumber {
     font-size: 16px;
     font-weight: 300;
-    margin-top: 0;
     margin-bottom: 0;
+    margin-top: 0;
+    height: 40px;
 }
-/* History dropdown sizing & alignment*/
 
-.dropdown {
-    display: table;
-    /* Set to table to force dropdown to wrap list items. */
-    
-    bottom: 15px;
-    width: 190px;
-    max-width: 210px;
-    max-height: 330px;
+#image {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 450px;
+}
+
+.img-align {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mdl-textfield {
+    position: relative;
+    bottom: 10px;
+}
+
+.mdl-spinner {
+    position: absolute !important;
+    top: 50%;
+}
+
+button.mdl-button {
+    height: 45px;
+    width: 45px;
+}
+
+.navigation img {
+    height: 14px;
+    width: 14px;
+    position: relative;
+    bottom: 3px;
+    left: 3px;
+}
+
+.navigation .nav {
+    font-size: 32px;
+}
+
+
+/* Align the search bar with the other buttons. */
+
+#search {
+    position: relative;
+    top: -10px;
+}
+
+#historyMenu {
+    padding: 0;
 }
 
 #expand {
     position: fixed;
     /*top: 7px;
     right: 100px;*/
-    
     opacity: 0;
 }
-
-#image {
-    height: 475px;
-}
-/* Customize the scrollbar */
 
 #image::-webkit-scrollbar {
     width: 8px;
@@ -88,69 +127,14 @@ body {
 #image::-webkit-scrollbar-thumb:hover {
     background: #7d7d7d;
 }
-/* Resize history button icon*/
 
-#history::shadow core-icon {
-    width: 30px;
-    height: 30px;
-}
-/* Align the history button*/
 
-#historybutton {
-    position: relative;
-    top: -2px;
-    left: 75px;
-}
-/* Remove margins in dropdown. */
-
-#historyMenu {
-    margin: 0;
-}
 /* Poorly drawn duck icon. */
 
 .logo {
     position: absolute;
     bottom: -20px;
-    left: -15px;
-}
-/* Position the navigation bar at the center. */
-
-.navigation {
-    position: relative;
-    right: 20px;
-}
-/* This additional margin is used to make the toast popup cover the logo completely
-so that it looks nicer. Otherwise there'd be a small protruding edge. */
-
-paper-toast {
-    margin-left: -3px;
-}
-/* Align the search bar with the other buttons. */
-
-#search {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-}
-
-.smallmenu {
-    overflow: hidden;
-    white-space: nowrap;
-    /* Do not wrap text to next line when it goes over. */
-    
-    text-overflow: ellipsis;
-    /* Renders ellipsis when text is clipped. */
-    
-    height: 30px;
-    /* Give each listing in history dropdown height of 30px. */
-}
-/* Vertically center the text within the list. Accounts for paper-item
-   .button-content padding. */
-
-.smallmenu > div {
-    position: relative;
-    top: -10px;
-    font-size: 14px;
+    left: -26px;
 }
 
 @-webkit-keyframes spin {
