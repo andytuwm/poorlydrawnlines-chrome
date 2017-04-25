@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
     "author": "Andy Tu",
-    "name": "Poorly Drawn Lines - Comics Viewer",
+    "name": "Poorly Drawn Lines Viewer",
     "short_name": "pdl-comics",
-    "description": "View the web comic Poorly Drawn Lines from any page!",
-    "version": "1.0.1",
+    "description": "View the Poorly Drawn Lines web comic conveniently.",
+    "version": "1.0.2",
 
     "icons": {
         "128": "assets/pdl_128.png"
@@ -19,10 +19,6 @@
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
 
     "permissions": [
-    "http://poorlydrawnlines.com/",
-    "storage"],
-
-    "background": {
-        "page": "bin/index.html"
-    }
+    "*://*.poorlydrawnlines.com/*",
+    "storage"]
 }
